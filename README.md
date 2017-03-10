@@ -34,8 +34,11 @@ Member Assignments
 ~~~~~~~~~~~~~~~~~~
 
 Bedig: Front-end Framework
+
 Malcolm: Front-end Framework, Chief Styling
+
 Sam: Back-end Framework
+
 Taylor: Back-end Framework
 
 All: Styling/Layout
