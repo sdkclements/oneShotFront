@@ -1,0 +1,10 @@
+<h2>{{vm.tab.title}}</h2>
+
+<p><a data-ui-sref="tabShow({id: tab.id})">{{tab.title}}</a></p>
+
+<h2> Add New Shot</h2>
+  <form ng-submit="vm.create()">
+    <input type="text" placeholder="Title" ng-model="vm.newShot.title">
+    <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
+    <button type="submit">Add Shot</button>
+  </form>
