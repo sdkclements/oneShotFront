@@ -11,42 +11,43 @@ angular
      RouterFunction
    ])
 
-   .factory("OneShotFactory", [
+   .factory("TabShotFactory", [
      "$resource",
-     OneShotFactoryFunction
+     TabShotFactoryFunction
    ])
+
 //Tabs Controllers//
    .controller("TabIndexController", [
-   "OneShotFactory",
+   "TabShotFactory",
    TabIndexControllerFunction
   ])
 
  .controller("TabNewController", [
-   "OneShotFactory",
+   "TabShotFactory",
    "$state",
    TabNewControllerFunction
   ])
 
  .controller("TabShowController", [
-   "OneShotFactory",
+   "TabShotFactory",
    "$stateParams",
    TabShowControllerFunction
   ])
 
 //Shots Controllers//
   .controller("ShotIndexController", [
-  "OneShotFactory",
+  "TabShotFactory",
   ShotIndexControllerFunction
   ])
 
   .controller("ShotNewController", [
-  "OneShotFactory",
+  "TabShotFactory",
   "$state",
   ShotNewControllerFunction
   ])
 
   .controller("ShotShowController", [
-  "OneShotFactory",
+  "TabShotFactory",
   "$stateParams",
   ShotShowControllerFunction
   ])
@@ -54,13 +55,13 @@ angular
   //Chasers Controllers//
 
   .controller("ChaserNewController", [
-  "OneShotFactory",
+  "TabShotFactory",
   "$state",
   ChaserNewControllerFunction
   ])
 
   .controller("ChaserShowController", [
-  "OneShotFactory",
+  "TabShotFactory",
   "$stateParams",
   ChaserShowControllerFunction
   ])
@@ -70,7 +71,7 @@ angular
 function RouterFunction($stateProvider){
   $stateProvider
   .state("tabIndex", {
-    url: "/tabs",
+    url: "/",
     templateUrl: "js/ng-views/index.html",
     controller: "TabIndexController",
     controllerAs: "vm"
@@ -84,17 +85,18 @@ function RouterFunction($stateProvider){
   })
 }
 
-function OneShotFactoryFunction ($resource) {
+function TabShotFactoryFunction ($resource) {
   return $resource("http://localhost:3000/tabs/:id")
 }
 
+
 //Tabs Functions//
-function TabIndexControllerFunction( OneShotFactory ) {
-  this.tabs = OneShotFactory.query()
+function TabIndexControllerFunction( TabShotFactory ) {
+  this.tabs = TabShotFactory.query()
 }
 
-function TabNewControllerFunction ( OneShotFactory ) {
-this.tab = new OneShotFactory();
+function TabNewControllerFunction ( TabShotFactory ) {
+this.tab = new TabShotFactory();
 this.create = function(){
   this.tab.$save(function(tab) {
     $state.go("tabShow", {id: tab.id})
@@ -102,17 +104,17 @@ this.create = function(){
   }
 }
 
-function TabShowControllerFunction( OneShotFactory, $stateParams) {
-  this.tab = OneShotFactory.get({id: $stateParams.id});
+function TabShowControllerFunction( TabShotFactory, $stateParams) {
+  this.tab = TabShotFactory.get({id: $stateParams.id});
 }
 
 //Shots Functions//
-function ShotIndexControllerFunction( OneShotFactory ) {
-  this.tabs.shots = OneShotFactory.query()
+function ShotIndexControllerFunction( TabShotFactory ) {
+  this.tabs.shots = TabShotFactory.query()
 }
 
-function ShotNewControllerFunction ( OneShotFactory ) {
-this.tab.shot = new OneShotFactory();
+function ShotNewControllerFunction ( TabShotFactory ) {
+this.tab.shot = new TabShotFactory();
 this.create = function(){
   this.tab.shot.$save(function(tab) {
     $state.go("tabShow", {id: tab.id})
@@ -120,13 +122,13 @@ this.create = function(){
   }
 }
 
-function ShotShowControllerFunction( OneShotFactory, $stateParams) {
-  this.tab.shot = OneShotFactory.get({id: $stateParams.id});
+function ShotShowControllerFunction( TabShotFactory, $stateParams) {
+  this.tab.shot = TabShotFactory.get({id: $stateParams.id});
 }
 
 //Chasers Functions//
-function ChaserNewControllerFunction ( OneShotFactory ) {
-this.shot.chaser = new OneShotFactory();
+function ChaserNewControllerFunction ( TabShotFactory ) {
+this.shot.chaser = new TabShotFactory();
 this.create = function(){
   this.shot.chaser.$save(function(tab) {
     $state.go("tabShow", {id: tab.id})
@@ -134,6 +136,6 @@ this.create = function(){
   }
 }
 
-function ChaserShowControllerFunction( OneShotFactory, $stateParams) {
-  this.shot.chaser = OneShotFactory.get({id: $stateParams.id});
+function ChaserShowControllerFunction( TabShotFactory, $stateParams) {
+  this.shot.chaser = TabShotFactory.get({id: $stateParams.id});
 }
