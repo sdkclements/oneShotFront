@@ -1,5 +1,5 @@
 <h2>Here are your tabs</h2>
-  <div data-ng-repeat="tab in vm.tabs | orderBy:'-created_at'">
+  <div data-ng-repeat="tab in vm.tabs">
     <p>
       <a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a>
   </div>
