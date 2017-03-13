@@ -1,13 +1,13 @@
 <h2>Here are your tabs</h2>
   <div data-ng-repeat="tab in vm.tabs | orderBy:'-created_at'">
     <p>
-      <a data-ui-sref="tabShow({id: tab.id})">{{tab.title}}</a>
+      <a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a>
   </div>
 
 
 <h2> Add New Tab</h2>
   <form ng-submit="vm.create()">
-    <input type="text" placeholder="Title" ng-model="vm.newTab.title">
-    <textarea placeholder="Content" ng-model="vm.newTab.content"></textarea>
+    <input type="text" placeholder="Title" ng-model="vm.newTab.name">
+    <textarea placeholder="Content" ng-model="vm.newTab.description"></textarea>
     <button type="submit">Add Tab</button>
   </form>

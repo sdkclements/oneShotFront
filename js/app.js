@@ -77,14 +77,15 @@ function RouterFunction($stateProvider){
   })
 
   .state("tabShow", {
-    url: "/tab/:id",
+    url: "/tabs/:id",
     templateUrl: "js/ng-views/show.html",
     controller: "GrumbleShowController",
     controllerAs: "vm"
   })
+}
 
 function OneShotFactoryFunction ($resource) {
-  return $resource("")
+  return $resource("http://localhost:3000/tabs/:id")
 }
 
 //Tabs Functions//
@@ -133,6 +134,6 @@ this.create = function(){
   }
 }
 
-function ShotShowControllerFunction( OneShotFactory, $stateParams) {
+function ChaserShowControllerFunction( OneShotFactory, $stateParams) {
   this.shot.chaser = OneShotFactory.get({id: $stateParams.id});
 }
