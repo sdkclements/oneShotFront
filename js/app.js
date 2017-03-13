@@ -79,13 +79,13 @@ function RouterFunction($stateProvider){
   .state("tabShow", {
     url: "/tabs/:id",
     templateUrl: "js/ng-views/show.html",
-    controller: "GrumbleShowController",
+    controller: "TabShowController",
     controllerAs: "vm"
   })
 }
 
 function OneShotFactoryFunction ($resource) {
-  return $resource("http://localhost:3000/tabs/:id")
+  return $resource("http://localhost:3000/tabs/")
 }
 
 //Tabs Functions//
