@@ -79,7 +79,7 @@ function RouterFunction($stateProvider){
   .state("tabShow", {
     url: "/tabs/:id",
     templateUrl: "js/ng-views/show.html",
-    controller: "GrumbleShowController",
+    controller: "TabShowController",
     controllerAs: "vm"
   })
 }
