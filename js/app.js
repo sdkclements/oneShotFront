@@ -85,7 +85,7 @@ function RouterFunction($stateProvider){
 }
 
 function OneShotFactoryFunction ($resource) {
-  return $resource("http://localhost:3000/tabs/")
+  return $resource("http://localhost:3000/tabs/:id")
 }
 
 //Tabs Functions//
