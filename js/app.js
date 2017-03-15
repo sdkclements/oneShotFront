@@ -219,7 +219,7 @@ function ChaserShowControllerFunction(OneShotFactory, $stateParams) {
         id: $stateParams.id
     });
 }
-=======
+
   .module("oneshot",[
       "ui.router",
       "ngResource"
@@ -358,4 +358,4 @@ this.create = function(){
 function ChaserShowControllerFunction( TabShotFactory, $stateParams) {
   this.shot.chaser = TabShotFactory.get({id: $stateParams.id});
 }
->>>>>>> 2eb7ea34c8c7c9f900e9775bc649114402a1b8b2
+
