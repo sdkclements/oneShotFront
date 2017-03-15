@@ -1,0 +1,13 @@
+<h2>Here are your tabs</h2>
+  <div data-ng-repeat="shot in vm.shots.id">
+    <p>
+      <a data-ui-sref="shotShow({id: shot.id})">{{tab.name}}</a>
+  </div>
+
+
+<h2> Add New Shot</h2>
+  <form ng-submit="vm.create()">
+    <input type="text" placeholder="Title" ng-model="vm.newShot.title">
+    <textarea placeholder="Content" ng-model="vm.newShot.description"></textarea>
+    <button type="submit">Add Shot</button>
+  </form>
