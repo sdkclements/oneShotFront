@@ -97,7 +97,7 @@ function RouterFunction($stateProvider) {
     .state("shotShow", {
         url: "/tabs/:tab_id/shots/:id",
         templateUrl: "js/ng-views/shot-show.html",
-        controller: "ShotIndexController",
+        controller: "ShotShowController",
         controllerAs: "vm"
     })
 }
@@ -158,7 +158,7 @@ function OneShotFactoryFunction($resource) {
 //Tabs Functions//
 function TabIndexControllerFunction(OneShotFactory) {
     this.tabs = OneShotFactory.tabs.query()
-    
+
 
 }
 
@@ -177,12 +177,12 @@ function TabShowControllerFunction(OneShotFactory, $stateParams) {
     this.tab = OneShotFactory.tabs.get({
         id: $stateParams.id
     })
-    
+
     this.shots = OneShotFactory.shots.query({
         tab_id: $stateParams.id
-    
+
     })
-    
+
 }
 
 //Shots Functions//
@@ -203,8 +203,13 @@ function ShotNewControllerFunction(OneShotFactory) {
 
 function ShotShowControllerFunction(OneShotFactory, $stateParams) {
     this.shot = OneShotFactory.shots.get({
-        tab_id: $stateParams.id
-    });
+      id: $stateParams.id,
+      tab_id: $stateParams.id
+    })
+    this.chasers = OneShotFactory.chasers.query({
+      tab_id: $stateParams.id,
+      shot_id: $stateParams.id
+    })
 }
 
 //Chasers Functions//
@@ -224,6 +229,3 @@ function ChaserShowControllerFunction(OneShotFactory, $stateParams) {
         id: $stateParams.id
     });
 }
-
- 
-

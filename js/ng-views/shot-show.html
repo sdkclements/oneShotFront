@@ -1,7 +1,9 @@
-<h2>{{shot.title}}</h2>
-<p>{{shot.content}}</p>
+<h2>{{vm.shot.title}}</h2>
+<p>{{vm.shot.content}}</p>
+<div data-ng-repeat="chaser in vm.chasers">
+  <p> {{chaser.content}} </p>
+</div>
 
-<p>{{chaser.content}}</p>
 <h2>Add New Chaser</h2>
   <form ng-submit="vm.create()">
     <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
