@@ -135,6 +135,18 @@ function OneShotFactoryFunction($resource) {
                 isArray: false
             }
         }),
+        shot: $resource("http://localhost:3000/tabs/:tab_id/shots/:id.json", {}, {
+            query: {
+                method: "GET",
+                params: {},
+                isArray: true
+            },
+            get: {
+                method: "GET",
+                params: {},
+                isArray: false
+            }
+        }),
         chasers: $resource("http://localhost:3000/tabs/:tab_id/shots/:shot_id/chasers.json", {}, {
             query: {
                 method: "GET",
@@ -202,9 +214,10 @@ function ShotNewControllerFunction(OneShotFactory) {
 }
 
 function ShotShowControllerFunction(OneShotFactory, $stateParams) {
-    this.shot = OneShotFactory.shots.get({
-      id: $stateParams.id,
-      tab_id: $stateParams.id
+    this.shot = OneShotFactory.shot.get({
+      tab_id: $stateParams.id,
+      id: $stateParams.id
+
     })
     this.chasers = OneShotFactory.chasers.query({
       tab_id: $stateParams.id,

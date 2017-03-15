@@ -3,7 +3,7 @@
 <p>"{{vm.tab.description}}"</p>
 <hr>
 <div data-ng-repeat="shot in vm.shots">
-  <p> <a data-ui-sref="shotShow({id: shot.id})">{{shot.title}}</a> </p>
+  <p> <a data-ui-sref="shotShow({tab_id: shot.tab_id, id: shot.id})">{{shot.title}}</a> </p>
 </div>
 
 
