@@ -21,14 +21,15 @@ angular
 
 .controller("TabIndexController", [
     "OneShotFactory",
+    "$state",
     TabIndexControllerFunction
 ])
 
-.controller("TabNewController", [
-    "OneShotFactory",
-    "$state",
-    TabNewControllerFunction
-])
+// .controller("TabNewController", [
+//     "OneShotFactory",
+//     "$state",
+//     TabNewControllerFunction
+// ])
 
 .controller("TabShowController", [
     "OneShotFactory",
@@ -160,18 +161,16 @@ function TabIndexControllerFunction(OneShotFactory) {
     this.tabs = OneShotFactory.tabs.query()
     
 
-}
 
-function TabNewControllerFunction(OneShotFactory) {
-    this.tab = new OneShotFactory.tabs;
+
+// function TabNewControllerFunction(OneShotFactory) {
+    this.newTab = new OneShotFactory.tabs;
     this.create = function() {
-        this.tab.$save(function(tab) {
-            $state.go("tabShow", {
-                id: tab.id
-            })
-        })
-    }
-}
+        this.newTab.$save(this.newTab).then ( () =>
+        this.tab = {}, $state.go("tabIndex") )
+      }
+  }
+
 
 function TabShowControllerFunction(OneShotFactory, $stateParams) {
     this.tab = OneShotFactory.tabs.get({
@@ -224,5 +223,3 @@ function ChaserShowControllerFunction(OneShotFactory, $stateParams) {
         id: $stateParams.id
     });
 }
-
- 
