@@ -1,17 +1,24 @@
-<h2>{{vm.tab.name}}</h2>
-<!-- <p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p> -->
-<p>{{vm.tab.description}}</p>
-<hr>
-<div data-ng-repeat="shot in vm.shots">
-  <p> <a data-ui-sref="shotShow({tab_id: shot.tab_id, id: shot.id})">{{shot.title}}</a> </p>
-  <p>--{{shot.author}}</p>
+<div class = "tab-descrip">
+ <h2>{{vm.tab.name}}</h2>
+ <h4>{{vm.tab.description}}</h4>
+</div>
+<br>
+
+<div class = "shots">
+ <h2>Shots</h2>
+ <hr>
+ <div data-ng-repeat="shot in vm.shots">
+     <p> <a data-ui-sref="shotShow({id: shot.id})">{{shot.title}}</a> </p>
+   </div>
 </div>
 
-
-<h3>Take A Shot</h3>
-<form ng-submit="vm.create()">
-  <input type="text" placeholder="Title" ng-model="vm.newShot.title">
-  <input type="text" placeholder="Author" ng-model="vm.newShot.author">
-  <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
-  <button type="submit">Add Shot</button>
-</form>
+<!-- <p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p> -->
+<br>
+<div class = "new-shot-form">
+ <h3> Add a Shot to this Tab</h3>
+   <form ng-submit="vm.create()">
+     <input type="text" placeholder="Title" ng-model="vm.newShot.title"><br>
+     <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
+     <button type="submit">Add Shot</button>
+   </form>
+</div>

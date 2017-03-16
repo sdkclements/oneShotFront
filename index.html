@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html ng-app="oneshot">
-  <head>
-    <meta charset="utf-8">
-    <title>OneShot</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+ <head>
+   <meta charset="utf-8">
+   <title>OneShot</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
-    <script src="js/app.js"></script>
-  </head>
+   <link rel="stylesheet" href="style.css">
+   <script src="js/app.js"></script>
+ </head>
+ <nav class = "nav-bar">
+   <h1><a data-ui-sref="tabIndex">oneShot<img src="images/shotglass.png"></a></h1>
 
-  <body>
-    <h1><a data-ui-sref="tabIndex">Welcome to oneShot!</a></h1>
+ </nav>
 
-    <main data-ui-view>
-    </main>
+ <body>
 
 
-  </body>
+   <main data-ui-view>
+     <p>There is no edit.  There is no delete. You only got one shot to post something, so make it count! <a data-ui-sref="tabIndex">oneShot</a></p>
+
+   </main>
+
+
+ </body>
+
+ <footer class = "footer">&copy; oneShot: created by Sam, Taylor, Malcolm, & Bedig</footer>
 </html>
