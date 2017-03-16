@@ -1,15 +1,14 @@
 <div class = "tabs">
   <h2>Open an Existing Tab</h2>
+  <hr>
     <div data-ng-repeat="tab in vm.tabs">
       <p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p>
     </div>
-
-
 </div>
 
 <br>
-<div class = "add-tab-form">
 
+<div class = "add-tab-form">
 <h2> Add to the Tab</h2>
   <form ng-submit="vm.create()">
     <input placeholder="Title" ng-model="vm.newTab.name"><br>

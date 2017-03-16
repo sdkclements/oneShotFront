@@ -1,9 +1,15 @@
+html {
+  position:relative;
+}
+
+
 body {
-  background-color: #02182B;
+  background-color: #2B65EC;
   padding-left: 10px;
-  padding-top: 100px;
+  padding-top: 150px;
   font-family: 'Roboto', sans-serif;
-  color: lightgrey;
+  color: white;
+
 }
 
 h1 a{
@@ -11,10 +17,11 @@ h1 a{
   text-decoration: none;
   padding-left: 15px;
   font-size: 50px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 a {
-  color: #448FA3;
+  color: #EDB32B;
   text-decoration: none;
 }
 
@@ -25,33 +32,60 @@ input, textarea {
 }
 
 
-.tabs, .shots, .add-tab-form, .new-shot-form, .tab-descrip {
+.tabs, .shots, .add-tab-form, .new-shot-form, .tab-descrip, .chaser, .add-chaser-form {
   border: solid brown;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 50px;
+  padding: 20px;
   text-align: center;
   width: 300px;
   margin: 0 auto;
+  margin-bottom: 50px;
+
 }
 
+.tab-descrip {
+  width: 1000px;
+  padding: 0px;
+  margin-bottom: 0;
+}
 
-.logo {
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  float: right;
+.tabs {
+  background-image: url("images/receipt.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
+.shots {
+  width: 500px;
+  background-image: url("images/shotglass.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.chaser  {
+  width: 500px;
+  background-image: url("images/soda.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .nav-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 9999;
   width: 100%;
+  height: 150px;
+  background-color: #EDB32B;
+  text-align: center;
+}
+
+.nav-bar img{
   height: 100px;
-  background-color: #0197F6;
-  text-align: left;
+  width: 100px;
 }
 
 .footer {
@@ -60,6 +94,6 @@ input, textarea {
   bottom: 0;
   left: 0;
   padding: 1px;
-  background-color: #0197F6;
+  background-color: #EDB32B;
   text-align: center;
 }

@@ -3,16 +3,17 @@
   <h4>{{vm.tab.description}}</h4>
 </div>
 <br>
-  <div class = "tabs">
 
+<div class = "shots">
   <h2>Shots</h2>
+  <hr>
   <div data-ng-repeat="shot in vm.shots">
       <p> <a data-ui-sref="shotShow({id: shot.id})">{{shot.title}}</a> </p>
     </div>
 </div>
 
-<p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p>
-
+<!-- <p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p> -->
+<br>
 <div class = "new-shot-form">
   <h3> Add a Shot to this Tab</h3>
     <form ng-submit="vm.create()">
