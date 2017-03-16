@@ -2,78 +2,86 @@
 
 
 angular
-  .module("oneshot", [
-      "ui.router",
-      "ngResource"
-  ])
- 
+    .module("oneshot", [
+        "ui.router",
+        "ngResource"
+    ])
 
-  .config([
-      "$stateProvider",
-      RouterFunction
-  ])
+.config([
+    "$stateProvider",
+    RouterFunction
+])
 
-  .factory("OneShotFactory", [
-      "$resource",
-      OneShotFactoryFunction
-  ])
+.factory("OneShotFactory", [
+    "$resource",
+    OneShotFactoryFunction
+])
 
-  .controller("TabIndexController", [
-      "OneShotFactory",
-      TabIndexControllerFunction
-  ])
 
-  // .controller("TabNewController", [
-  //     "OneShotFactory",
-  //     "$state",
-  //     TabNewControllerFunction
-  // ])
 
-  .controller("TabShowController", [
-      "OneShotFactory",
-      "$stateParams",
-      TabShowControllerFunction
-  ])
+.controller("TabIndexController", [
+    "OneShotFactory",
+    TabIndexControllerFunction
+])
 
-  //Shots Controllers//
-  .controller("ShotIndexController", [
-      "OneShotFactory",
-      ShotIndexControllerFunction
-  ])
+.controller("TabNewController", [
+    "OneShotFactory",
+    "$state",
+    TabNewControllerFunction
+])
 
-  // .controller("ShotNewController", [
-  //     "OneShotFactory",
-  //     "$state",
-  //     ShotNewControllerFunction
-  // ])
+.controller("TabShowController", [
+    "OneShotFactory",
+    "$stateParams",
+    TabShowControllerFunction
+])
 
-  .controller("ShotShowController", [
-      "OneShotFactory",
-      "$stateParams",
-      ShotShowControllerFunction
-  ])
 
-  //Chasers Controllers//
-  .controller("ChaserNewController", [
-      "OneShotFactory",
-      "$state",
-      ChaserNewControllerFunction
-  ])
 
-  .controller("ChaserShowController", [
-      "OneShotFactory",
-      "$stateParams",
-      ChaserShowControllerFunction
-  ])
+
+//Shots Controllers//
+.controller("ShotIndexController", [
+    "OneShotFactory",
+    ShotIndexControllerFunction
+])
+
+.controller("ShotNewController", [
+    "OneShotFactory",
+    "$state",
+    ShotNewControllerFunction
+])
+
+.controller("ShotShowController", [
+    "OneShotFactory",
+    "$stateParams",
+    ShotShowControllerFunction
+])
+
+//Chasers Controllers//
+
+.controller("ChaserNewController", [
+    "OneShotFactory",
+    "$state",
+    ChaserNewControllerFunction
+])
+
+.controller("ChaserShowController", [
+    "OneShotFactory",
+    "$stateParams",
+    ChaserShowControllerFunction
+])
+
+
 
 function RouterFunction($stateProvider) {
-  $stateProvider
-    .state("tabIndex", {
-        url: "/tabs",
-        templateUrl: "js/ng-views/index.html",
-        controller: "TabIndexController",
-        controllerAs: "vm"
-    })
+    $stateProvider
+        .state("tabIndex", {
+            url: "/tabs",
+            templateUrl: "js/ng-views/index.html",
+            controller: "TabIndexController",
+            controllerAs: "vm"
+        })
+
     .state("tabShow", {
         url: "/tabs/:id",
         templateUrl: "js/ng-views/show.html",
@@ -95,6 +103,7 @@ function RouterFunction($stateProvider) {
 }
 
 function OneShotFactoryFunction($resource) {
+
     return {
         tabs: $resource("https://one-shot-backend.herokuapp.com/tabs/:id.json", {}, {
             query: {
@@ -160,99 +169,86 @@ function OneShotFactoryFunction($resource) {
                 method: "POST"
             }
         })
+
     }
 }
 
-//Tabs Functions//
-// function TabIndexControllerFunction(OneShotFactory) {
-//   this.tabs = OneShotFactory.tabs.query()
-// }
-//
-// function TabNewControllerFunction(OneShotFactory) {
-//   this.tab = new OneShotFactory.tabs;
-//   this.create = function() {
-//     this.tab.$save(function(tab) {
-//       $state.go("tabShow", {
-//         id: tab.id
-//       })
-//     })
-//   }
-// }
 
-function TabIndexControllerFunction(OneShotFactory, $state) {
-    this.tabs = OneShotFactory.tabs.query(function(res){
-        console.log(res)
-    })
-// function TabNewControllerFunction(OneShotFactory) {
-    this.newTab = new OneShotFactory.tabs;
-    this.create = function($state) {
-        this.newTab.$save(this.newTab).then ( () =>
-        this.tab = {}, $state.go("tabIndex") )
-      }
-  }
+
+
+
+//Tabs Functions//
+function TabIndexControllerFunction(OneShotFactory) {
+    this.tabs = OneShotFactory.tabs.query()
+
+
+}
+
+function TabNewControllerFunction(OneShotFactory) {
+    this.tab = new OneShotFactory.tabs;
+    this.create = function() {
+        this.tab.$save(function(tab) {
+            $state.go("tabShow", {
+                id: tab.id
+            })
+        })
+    }
+}
 
 function TabShowControllerFunction(OneShotFactory, $stateParams) {
-  this.tab = OneShotFactory.tabs.get({
-    id: $stateParams.id
-  })
-  this.shots = OneShotFactory.shots.query({
-    tab_id: $stateParams.id
-  })
+    this.tab = OneShotFactory.tabs.get({
+        id: $stateParams.id
+    })
+
+    this.shots = OneShotFactory.shots.query({
+        tab_id: $stateParams.id
+
+    })
+
 }
 
 //Shots Functions//
-// function ShotIndexControllerFunction(OneShotFactory) {
-//   this.shots = OneShotFactory.shots.query()
-// }
-//
-// function ShotNewControllerFunction(OneShotFactory) {
-//   this.shot = new OneShotFactory.shots;
-//   this.create = function() {
-//     this.shot.$save(function(tab) {
-//       $state.go("tabShow", {
-//         id: tab.id
-//         })
-//     })
-//   }
-// }
+function ShotIndexControllerFunction(OneShotFactory) {
+    this.shots = OneShotFactory.shots.query()
+}
 
-function ShotIndexControllerFunction(OneShotFactory, $state) {
-    this.shots = OneShotFactory.shots.query(function(res){
-        console.log(res)
-    })
-// function ShotNewControllerFunction(OneShotFactory) {
-    this.newShot = new OneShotFactory.shots;
-    this.create = function($state) {
-        this.newShot.$save(this.newShot).then ( () =>
-        this.shot = {}, $state.go("shotIndex") )
-      }
-  }
+function ShotNewControllerFunction(OneShotFactory) {
+    this.shot = new OneShotFactory.shots;
+    this.create = function() {
+        this.shot.$save(function(tab) {
+            $state.go("tabShow", {
+                id: tab.id
+            })
+        })
+    }
+}
 
 function ShotShowControllerFunction(OneShotFactory, $stateParams) {
-  this.shot = OneShotFactory.shot.get({
-    tab_id: $stateParams.id,
-    id: $stateParams.id
-  })
-  this.chasers = OneShotFactory.chasers.query({
-    tab_id: $stateParams.id,
-    shot_id: $stateParams.id
-  })
+    this.shot = OneShotFactory.shot.get({
+      tab_id: $stateParams.id,
+      id: $stateParams.id
+
+    })
+    this.chasers = OneShotFactory.chasers.query({
+      tab_id: $stateParams.id,
+      shot_id: $stateParams.id
+    })
 }
 
 //Chasers Functions//
 function ChaserNewControllerFunction(OneShotFactory) {
-  this.chaser = new OneShotFactory.chasers;
-  this.create = function() {
-    this.chaser.$save(function(tab) {
-      $state.go("tabShow", {
-        id: tab.id
-      })
-    })
-  }
+    this.chaser = new OneShotFactory.chasers;
+    this.create = function() {
+        this.chaser.$save(function(tab) {
+            $state.go("tabShow", {
+                id: tab.id
+            })
+        })
+    }
 }
 
 function ChaserShowControllerFunction(OneShotFactory, $stateParams) {
-  this.chaser = OneShotFactory.get({
-    id: $stateParams.id
-  });
+    this.chaser = OneShotFactory.get({
+        id: $stateParams.id
+    });
 }
