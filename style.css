@@ -49,6 +49,7 @@ input, textarea {
   margin-bottom: 0;
 }
 
+
 .tabs {
   background-image: url("images/receipt.png");
   background-position: center;
@@ -89,7 +90,7 @@ input, textarea {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;

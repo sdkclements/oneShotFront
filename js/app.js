@@ -158,31 +158,30 @@ function OneShotFactoryFunction($resource) {
 //Tabs Functions//
 function TabIndexControllerFunction(OneShotFactory) {
     this.tabs = OneShotFactory.tabs.query()
-    
+
 
 }
 
-function TabNewControllerFunction(OneShotFactory) {
-    this.tab = new OneShotFactory.tabs;
-    this.create = function() {
-        this.tab.$save(function(tab) {
-            $state.go("tabShow", {
-                id: tab.id
-            })
-        })
-    }
+function TabNewControllerFunction(OneShotFactory, $state) {
+  this.tab = new OneShotFactory.tabs()
+  this.create = function() {
+      this.tab.$save(function(tab){
+      $state.go("tabIndex")
+    })
+  }
 }
+
 
 function TabShowControllerFunction(OneShotFactory, $stateParams) {
     this.tab = OneShotFactory.tabs.get({
         id: $stateParams.id
     })
-    
+
     this.shots = OneShotFactory.shots.query({
         tab_id: $stateParams.id
-    
+
     })
-    
+
 }
 
 //Shots Functions//
@@ -224,6 +223,3 @@ function ChaserShowControllerFunction(OneShotFactory, $stateParams) {
         id: $stateParams.id
     });
 }
-
- 
-
