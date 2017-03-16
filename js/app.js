@@ -81,6 +81,7 @@ function RouterFunction($stateProvider) {
         controllerAs: "vm"
     })
 }
+
 function OneShotFactoryFunction($resource) {
     return {
         tabs: $resource("https://one-shot-backend.herokuapp.com/tabs/:id.json", {}, {
