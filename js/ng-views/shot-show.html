@@ -1,13 +1,15 @@
-<div ng-init>
+
 <h2>{{vm.shot.title}}</h2>
 <p>{{vm.shot.content}}</p>
-</div>
+
 <div data-ng-repeat="chaser in vm.chasers">
   <p> {{chaser.content}} </p>
+  <p> --{{chaser.author}}</p>
 </div>
 
-<h2>Add New Chaser</h2>
-  <form ng-submit="vm.create()">
-    <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
-    <button type="submit">Add Chaser</button>
-  </form>
+<h2>Say Something</h2>
+<form ng-submit="vm.create()">
+  <input placeholder="Name" ng-model="vm.newChaser.author"></input>
+  <textarea placeholder="Reply" ng-model="vm.newShot.content"></textarea>
+  <button type="submit">Add Chaser</button>
+</form>

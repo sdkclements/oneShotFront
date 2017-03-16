@@ -1,13 +1,13 @@
-<h2>Here are your Tabs</h2>
+<h2>Talk In The Tabs</h2>
   <div data-ng-repeat="tab in vm.tabs">
     <p>
       <a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a>
   </div>
 
 
-<h2>Add New Tab</h2>
+<h2>Add A New Tab!</h2>
 <form ng-submit="vm.create()">
   <input placeholder="Title" ng-model="vm.newTab.name">
-  <textarea placeholder="Content" ng-model="vm.newTab.description"></textarea>
+  <textarea placeholder="Description" ng-model="vm.newTab.description"></textarea>
   <button type="submit">Add Tab</button>
 </form>
