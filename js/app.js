@@ -6,6 +6,11 @@ angular
       "ui.router",
       "ngResource"
   ])
+  .config(function($sceDelegateProvider) {
+ $sceDelegateProvider.resourceUrlWhitelist([
+   'self',
+   'https://one-shot-backend.herokuapp.com/**',
+ ])
 
   .config([
       "$stateProvider",
