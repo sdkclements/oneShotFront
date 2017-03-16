@@ -105,7 +105,7 @@ function RouterFunction($stateProvider) {
 function OneShotFactoryFunction($resource) {
 
     return {
-        tabs: $resource("http://localhost:3000/tabs/:id.json", {}, {
+        tabs: $resource("https://one-shot-backend.herokuapp.com/tabs/:id.json", {}, {
             query: {
                 method: "GET",
                 params: {},
@@ -123,7 +123,7 @@ function OneShotFactoryFunction($resource) {
                 method: "PUT"
             }
         }),
-        shots: $resource("http://localhost:3000/tabs/:tab_id/shots.json", {}, {
+        shots: $resource("https://one-shot-backend.herokuapp.com/tabs/:tab_id/shots.json", {}, {
             query: {
                 method: "GET",
                 params: {},
@@ -133,9 +133,28 @@ function OneShotFactoryFunction($resource) {
                 method: "GET",
                 params: {},
                 isArray: false
+            },
+            create: {
+                method: "POST"
+            }
+
+        }),
+        shot: $resource("https://one-shot-backend.herokuapp.com/tabs/:tab_id/shots/:id.json", {}, {
+            query: {
+                method: "GET",
+                params: {},
+                isArray: true
+            },
+            get: {
+                method: "GET",
+                params: {},
+                isArray: false
+            },
+            create: {
+                method: "POST"
             }
         }),
-        shot: $resource("http://localhost:3000/tabs/:tab_id/shots/:id.json", {}, {
+        chasers: $resource("https://one-shot-backend.herokuapp.com/tabs/:tab_id/shots/:shot_id/chasers.json", {}, {
             query: {
                 method: "GET",
                 params: {},
@@ -145,18 +164,9 @@ function OneShotFactoryFunction($resource) {
                 method: "GET",
                 params: {},
                 isArray: false
-            }
-        }),
-        chasers: $resource("http://localhost:3000/tabs/:tab_id/shots/:shot_id/chasers.json", {}, {
-            query: {
-                method: "GET",
-                params: {},
-                isArray: true
             },
-            get: {
-                method: "GET",
-                params: {},
-                isArray: false
+            create: {
+                method: "POST"
             }
         })
 
