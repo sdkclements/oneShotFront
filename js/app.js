@@ -22,11 +22,11 @@ angular
       TabIndexControllerFunction
   ])
 
-  .controller("TabNewController", [
-      "OneShotFactory",
-      "$state",
-      TabNewControllerFunction
-  ])
+  // .controller("TabNewController", [
+  //     "OneShotFactory",
+  //     "$state",
+  //     TabNewControllerFunction
+  // ])
 
   .controller("TabShowController", [
       "OneShotFactory",
@@ -40,11 +40,11 @@ angular
       ShotIndexControllerFunction
   ])
 
-  .controller("ShotNewController", [
-      "OneShotFactory",
-      "$state",
-      ShotNewControllerFunction
-  ])
+  // .controller("ShotNewController", [
+  //     "OneShotFactory",
+  //     "$state",
+  //     ShotNewControllerFunction
+  // ])
 
   .controller("ShotShowController", [
       "OneShotFactory",
@@ -153,20 +153,32 @@ function OneShotFactoryFunction($resource) {
 }
 
 //Tabs Functions//
-function TabIndexControllerFunction(OneShotFactory) {
-  this.tabs = OneShotFactory.tabs.query()
-}
+// function TabIndexControllerFunction(OneShotFactory) {
+//   this.tabs = OneShotFactory.tabs.query()
+// }
+//
+// function TabNewControllerFunction(OneShotFactory) {
+//   this.tab = new OneShotFactory.tabs;
+//   this.create = function() {
+//     this.tab.$save(function(tab) {
+//       $state.go("tabShow", {
+//         id: tab.id
+//       })
+//     })
+//   }
+// }
 
-function TabNewControllerFunction(OneShotFactory) {
-  this.tab = new OneShotFactory.tabs;
-  this.create = function() {
-    this.tab.$save(function(tab) {
-      $state.go("tabShow", {
-        id: tab.id
-      })
+function TabIndexControllerFunction(OneShotFactory, $state) {
+    this.tabs = OneShotFactory.tabs.query(function(res){
+        console.log(res)
     })
+// function TabNewControllerFunction(OneShotFactory) {
+    this.newTab = new OneShotFactory.tabs;
+    this.create = function($state) {
+        this.newTab.$save(this.newTab).then ( () =>
+        this.tab = {}, $state.go("tabIndex") )
+      }
   }
-}
 
 function TabShowControllerFunction(OneShotFactory, $stateParams) {
   this.tab = OneShotFactory.tabs.get({
@@ -178,20 +190,32 @@ function TabShowControllerFunction(OneShotFactory, $stateParams) {
 }
 
 //Shots Functions//
-function ShotIndexControllerFunction(OneShotFactory) {
-  this.shots = OneShotFactory.shots.query()
-}
+// function ShotIndexControllerFunction(OneShotFactory) {
+//   this.shots = OneShotFactory.shots.query()
+// }
+//
+// function ShotNewControllerFunction(OneShotFactory) {
+//   this.shot = new OneShotFactory.shots;
+//   this.create = function() {
+//     this.shot.$save(function(tab) {
+//       $state.go("tabShow", {
+//         id: tab.id
+//         })
+//     })
+//   }
+// }
 
-function ShotNewControllerFunction(OneShotFactory) {
-  this.shot = new OneShotFactory.shots;
-  this.create = function() {
-    this.shot.$save(function(tab) {
-      $state.go("tabShow", {
-        id: tab.id
-        })
+function ShotIndexControllerFunction(OneShotFactory, $state) {
+    this.shots = OneShotFactory.shots.query(function(res){
+        console.log(res)
     })
+// function ShotNewControllerFunction(OneShotFactory) {
+    this.newShot = new OneShotFactory.shots;
+    this.create = function($state) {
+        this.newShot.$save(this.newShot).then ( () =>
+        this.shot = {}, $state.go("shotIndex") )
+      }
   }
-}
 
 function ShotShowControllerFunction(OneShotFactory, $stateParams) {
   this.shot = OneShotFactory.shot.get({
