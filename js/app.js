@@ -208,7 +208,7 @@ function ShotIndexControllerFunction(OneShotFactory, $state) {
     //     this.shot = {}, $state.go("shotIndex") )
     //   }
   }
-function ShotShowControllerFunction(OneShotFactory, $stateParams) {
+function ShotShowControllerFunction(OneShotFactory, $state, $stateParams) {
   this.shot = OneShotFactory.shot.get({
     tab_id: $stateParams.id,
     id: $stateParams.id
