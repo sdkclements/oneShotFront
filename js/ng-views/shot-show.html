@@ -1,20 +1,20 @@
 <div class ="chaser">
- <h2>Chasers</h2>
- <hr>
- <h2>{{vm.shot.title}}</h2>
- <p> {{vm.shot.content}}</p>
- <br>
- <div data-ng-repeat="chaser in vm.chasers">
- <p>{{chaser.content}}</p>
- </div>
+  <h2>Chasers</h2>
+  <hr>
+  <h2>{{vm.shot.title}}</h2>
+  <p> {{vm.shot.content}}</p>
+  <br>
+  <div data-ng-repeat="chaser in vm.chasers">
+    <p>{{chaser.content}}</p>
+  </div>
 </div>
 
 
 <div class = "add-chaser-form">
 
- <h2>Need a Chaser?</h2>
-   <form ng-submit="vm.create()">
-     <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
-     <button type="submit">Add Chaser</button>
-   </form>
+  <h2>Need a Chaser?</h2>
+  <form ng-submit="vm.create()">
+    <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
+    <button type="submit">Add Chaser</button>
+  </form>
 </div>
