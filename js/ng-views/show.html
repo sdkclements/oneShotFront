@@ -1,24 +1,25 @@
 <div class = "tab-descrip">
- <h2>{{vm.tab.name}}</h2>
- <h4>{{vm.tab.description}}</h4>
+  <h2>{{vm.tab.name}}</h2>
+  <h4>{{vm.tab.description}}</h4>
 </div>
 <br>
 
 <div class = "shots">
- <h2>Shots</h2>
- <hr>
- <div data-ng-repeat="shot in vm.shots">
-     <p> <a data-ui-sref="shotShow({tab_id: shot.tab_id, id: shot.id})">{{shot.title}}</a> --{{shot.author}}</p>
-   </div>
+  <h2>Shots</h2>
+  <!-- using border bottom instead of <hr> -->
+  <hr>
+  <div data-ng-repeat="shot in vm.shots">
+    <p> <a data-ui-sref="shotShow({tab_id: shot.tab_id, id: shot.id})">{{shot.title}}</a> --{{shot.author}}</p>
+  </div>
 </div>
 
-<!-- <p><a data-ui-sref="tabShow({id: tab.id})">{{tab.name}}</a></p> -->
+<!-- avoid using br, use margin instead -->
 <br>
 <div class = "new-shot-form">
- <h3> Add a Shot to this Tab</h3>
-   <form ng-submit="vm.create()">
-     <input type="text" placeholder="Title" ng-model="vm.newShot.title"><br>
-     <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
-     <button type="submit">Add Shot</button>
-   </form>
+  <h3> Add a Shot to this Tab</h3>
+  <form ng-submit="vm.create()">
+    <input type="text" placeholder="Title" ng-model="vm.newShot.title"><br>
+    <textarea placeholder="Content" ng-model="vm.newShot.content"></textarea>
+    <button type="submit">Add Shot</button>
+  </form>
 </div>
